@@ -50,7 +50,7 @@ export default function App() {
           height:
             Platform.OS === 'android' && Platform.Version >= 50
               ? Constants.windowHeight + common.scaleHeight(0)
-              : Constants.windowHeight + 90,
+              : Constants.windowHeight + 40,
           width: 6630,
           // width: Constants.windowWidth,
           height: Constants.windowHeight,

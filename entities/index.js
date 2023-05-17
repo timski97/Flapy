@@ -4,7 +4,7 @@ import Floor from '../src/components/Floor';
 import Obstacle from '../src/components/Obstracle';
 import Constants from '../src/constants/Constants';
 import Coins from '../src/components/Coins';
-
+import BonusBird from '../src/components/BonusBird';
 import {Dimensions} from 'react-native';
 import {getPipeSizePosPair} from '../utils/random';
 import {generatePipes} from '../utils/random';
@@ -12,8 +12,8 @@ import {generatePipes} from '../utils/random';
 // const windowHeight = Dimensions.get('window').height;
 // const windowWidth = Dimensions.get('window').width;
 const {height, width} = Dimensions.get('window');
-const heightRatio = height / 667;
-const widthRatio = width / 375;
+// const heightRatio = height / 667;
+// const widthRatio = width / 375;
 
 export default restart => {
   let engine = Matter.Engine.create({enableSleeping: false});
@@ -35,6 +35,12 @@ export default restart => {
       {x: width / 8, y: height / 2},
       {height: 41, width: 60},
     ),
+    // bonusBird: BonusBird(
+    //   world,
+    //   'green',
+    //   {x: width / 8, y: height / 2},
+    //   {height: 41, width: 60},
+    // ),
     Coins1: Coins(
       world,
       'Coins1',
