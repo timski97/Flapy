@@ -25,7 +25,7 @@ export const Obstacle = props => {
         width: widthBody,
         height: heightBody,
         overflow: 'hidden',
-        flexDirection: 'column',
+        // flexDirection: 'column',
       }}>
       {Array.apply(
         null,

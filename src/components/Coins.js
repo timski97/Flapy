@@ -17,8 +17,10 @@ export const Coins = props => {
         top: yBody,
         width: widthBody,
         height: heightBody,
-        overflow: 'hidden',
-        flexDirection: 'column',
+        // justifyContent: 'center',
+        // alignItems: 'center',
+        // overflow: 'hidden',
+        // flexDirection: 'column',
         zIndex: 1000,
       }}
       resizeMode="stretch"

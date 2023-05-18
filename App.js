@@ -32,7 +32,7 @@ export default function App() {
   }, []);
   return (
     <View style={{flex: 1}}>
-      <StatusBar translucent backgroundColor={'trasparent'} />
+      {/* <StatusBar translucent backgroundColor={'trasparent'} /> */}
       {/* <AnimatedBackground /> */}
 
       <FastImage

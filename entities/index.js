@@ -26,6 +26,8 @@ export default restart => {
   const pipeSizePosB = getPipeSizePosPair(Constants.windowWidth * 0.9);
   const coinPosA = getPipeSizePosPair();
   const coinPosB = getPipeSizePosPair(Constants.windowWidth * 0.9);
+  const crashPosA = getPipeSizePosPair();
+  const crashPosB = getPipeSizePosPair(Constants.windowWidth * 0.9);
   return {
     physics: {engine, world},
 
@@ -33,13 +35,25 @@ export default restart => {
       world,
       'green',
       {x: width / 8, y: height / 2},
-      {height: 41, width: 60},
+      {height: 1, width: 1},
     ),
     // bonusBird: BonusBird(
     //   world,
     //   'green',
-    //   {x: width / 8, y: height / 2},
+    //   {x: width / 2, y: height / 2},
     //   {height: 41, width: 60},
+    // ),
+    // Crash1: Crash(
+    //   world,
+    //   'green',
+    //   crashPosA.crashPos.pos,
+    //   crashPosA.crashPos.size,
+    // ),
+    // Crash2: Crash(
+    //   world,
+    //   'green',
+    //   crashPosB.crashPos.pos,
+    //   crashPosB.crashPos.size,
     // ),
     Coins1: Coins(
       world,

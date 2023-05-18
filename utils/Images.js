@@ -8,5 +8,6 @@ export const Images = {
   column: require('../assets/img/column/column.png'),
   coins: require('../assets/img/column/goldArtcoin.png'),
   hart: require('../assets/img/modal/hart.png'),
-  bonusBird1: require('../assets/img/bird/bonusBird1.png'),
+  bird4: require('../assets/img/bird/bonusBird1.png'),
+  crash: require('../assets/img/bird/crash.png'),
 };

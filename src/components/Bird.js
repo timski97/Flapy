@@ -1,6 +1,6 @@
 import Matter from 'matter-js';
 import React, {useEffect, useRef} from 'react';
-import {Image, Animated} from 'react-native';
+import {Image, Animated, View} from 'react-native';
 import {Images} from '../../utils/Images';
 
 const Bird = props => {
@@ -24,18 +24,22 @@ const Bird = props => {
   let image = Images['bird' + props.pose];
 
   return (
-    <Image
-      style={{
-        position: 'absolute',
-        left: xBody,
-        top: yBody,
-        width: widthBody,
-        height: heightBody,
-        // transform: [{rotate: rotation}],
-      }}
-      resizeMode="stretch"
-      source={image}
-    />
+    <View>
+      <Image
+        style={{
+          position: 'absolute',
+          left: xBody,
+          top: yBody,
+          width: widthBody,
+          height: heightBody,
+          width: 60,
+          height: 40,
+          // transform: [{rotate: rotation}],
+        }}
+        resizeMode="stretch"
+        source={image}
+      />
+    </View>
   );
 };
 

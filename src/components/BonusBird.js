@@ -11,16 +11,7 @@ const BonusBird = props => {
 
   const xBody = props.body.position.x - widthBody / 2;
   const yBody = props.body.position.y - heightBody / 2;
-  // const startAnimated = () => {
-  //   animatedValue.setValue(props.body.velocity.y);
-  // };
-
-  // const rotation = startAnimated.interpolate({
-  //   inputRange: [-10, 0, 10, 20],
-  //   outputRange: ['-20deg', '0deg', '15deg', '45deg'],
-  //   extrapolate: 'clamp',
-  // });
-  let image = Images['bonusBird' + props.pose];
+  let imageBonus = Images['bonusBird' + props.poseBonus];
   return (
     <Image
       style={{
@@ -32,23 +23,26 @@ const BonusBird = props => {
         // transform: [{rotate: rotation}],
       }}
       resizeMode="stretch"
-      source={image}
+      source={imageBonus}
     />
   );
 };
 
-export default (world, color, pos, size) => {
-  const initialBird = Matter.Bodies.rectangle(
+export default (world, color, pos, size, label) => {
+  const initialBonusBird = Matter.Bodies.rectangle(
     pos.x,
     pos.y,
     size.width,
     size.height,
-    {label: 'BonusBird'},
+    {
+      label,
+      isStatic: true,
+    },
   );
-  Matter.World.add(world, initialBird);
+  Matter.World.add(world, initialBonusBird);
 
   return {
-    body: initialBird,
+    body: initialBonusBird,
     pos,
     renderer: <BonusBird />,
   };

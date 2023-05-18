@@ -20,29 +20,39 @@ export const getPipeSizePosPair = (addToPosX = 0) => {
   const pipeBottom = {
     pos: {
       x: Constants.windowWidth + addToPosX,
-      y: Constants.windowHeight * 2 + 200 + yPosTop,
+      y: Constants.windowHeight * 2 + 180 + yPosTop,
     },
     size: {height: Constants.windowHeight * 2, width: 75},
   };
   const coinPos = {
     pos: {
       x: Constants.windowWidth + addToPosX,
-      // y: pipeBottom.pos.y - Constants.windowHeight / 2 - 100,
-      y:
-        (Math.abs(
-          Math.abs(yPosTop) - (Constants.windowHeight * 2 + 200 + yPosTop) / 2,
-        ) +
-          (Constants.windowHeight * 2 + 200 + yPosTop) / 2) /
-        2,
+      // y: (pipeTop.pos.y - pipeBottom.pos.y) / 2 + pipeBottom.pos.y,
+      y: Math.abs((pipeBottom.pos.y - pipeTop.pos.y) / 2 + pipeTop.pos.y),
+
+      // y:
+      //   (Math.abs(
+      //     Math.abs(yPosTop) - (Constants.windowHeight * 2 + 200 + yPosTop) / 2,
+      //   ) +
+      //     (Constants.windowHeight * 2 + 200 + yPosTop) / 2) /
+      //   2,
       // y: (pipeBottom.pos.y + pipeTop.pos.y) / 2 + Constants.windowWidth,
       // y: (pipeTop.pos.y / 2 - pipeBottom.pos.y / 2) / 2 + pipeTop.pos.y / 2,
     },
     size: {height: 41, width: 41},
   };
+  // const crashPos = {
+  //   pos: {
+  //     x: Constants.windowWidth + addToPosX,
+  //     // y: (pipeTop.pos.y - pipeBottom.pos.y) / 2 + pipeBottom.pos.y,
+  //     y: Constants.windowHeight * 2,
+  //   },
+  //   size: {height: 50, width: 50},
+  // };
   // console.log(coinPos.pos.y);
   // console.log('pipeBotom', pipeBottom);
   // console.log('pipTop', pipeTop);
-  // console.log('coin', coinPos);
+  console.log('coin', coinPos);
 
   return {pipeTop, pipeBottom, coinPos};
 };
