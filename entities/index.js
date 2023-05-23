@@ -7,7 +7,6 @@ import Coins from '../src/components/Coins';
 import BonusBird from '../src/components/BonusBird';
 import {Dimensions} from 'react-native';
 import {getPipeSizePosPair} from '../utils/random';
-import {generatePipes} from '../utils/random';
 
 // const windowHeight = Dimensions.get('window').height;
 // const windowWidth = Dimensions.get('window').width;
@@ -26,35 +25,13 @@ export default restart => {
   const pipeSizePosB = getPipeSizePosPair(Constants.windowWidth * 0.9);
   const coinPosA = getPipeSizePosPair();
   const coinPosB = getPipeSizePosPair(Constants.windowWidth * 0.9);
-  const crashPosA = getPipeSizePosPair();
-  const crashPosB = getPipeSizePosPair(Constants.windowWidth * 0.9);
+
   return {
     physics: {engine, world},
 
-    bird: Bird(
-      world,
-      'green',
-      {x: width / 8, y: height / 2},
-      {height: 1, width: 1},
-    ),
-    // bonusBird: BonusBird(
-    //   world,
-    //   'green',
-    //   {x: width / 2, y: height / 2},
-    //   {height: 41, width: 60},
-    // ),
-    // Crash1: Crash(
-    //   world,
-    //   'green',
-    //   crashPosA.crashPos.pos,
-    //   crashPosA.crashPos.size,
-    // ),
-    // Crash2: Crash(
-    //   world,
-    //   'green',
-    //   crashPosB.crashPos.pos,
-    //   crashPosB.crashPos.size,
-    // ),
+    bird: Bird(world, 'green', {x: 50, y: 300}, {height: 40, width: 60}),
+    // bird7: Bird(world, 'green', {x: 50, y: 300}, {height: 60, width: 60}),
+
     Coins1: Coins(
       world,
       'Coins1',
@@ -104,7 +81,7 @@ export default restart => {
       world,
       'green',
       {x: Constants.windowWidth / 2, y: Constants.windowHeight},
-      {height: 50, width: Constants.windowWidth},
+      {height: 1, width: Constants.windowWidth},
     ),
   };
 };

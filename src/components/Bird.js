@@ -20,26 +20,25 @@ const Bird = props => {
   //   outputRange: ['-20deg', '0deg', '15deg', '45deg'],
   //   extrapolate: 'clamp',
   // });
+  // console.log('bird', yBody);
 
   let image = Images['bird' + props.pose];
 
   return (
-    <View>
-      <Image
-        style={{
-          position: 'absolute',
-          left: xBody,
-          top: yBody,
-          width: widthBody,
-          height: heightBody,
-          width: 60,
-          height: 40,
-          // transform: [{rotate: rotation}],
-        }}
-        resizeMode="stretch"
-        source={image}
-      />
-    </View>
+    <Image
+      style={{
+        position: 'absolute',
+        left: xBody,
+        top: yBody,
+        width: widthBody,
+        height: heightBody,
+        // width: 60,
+        // height: 40,
+        // transform: [{rotate: rotation}],
+      }}
+      resizeMode="stretch"
+      source={image}
+    />
   );
 };
 

@@ -8,7 +8,8 @@ export const Coins = props => {
   const heightBody = props.body.bounds.max.y - props.body.bounds.min.y;
   const xBody = props.body.position.x - widthBody / 2;
   const yBody = props.body.position.y - heightBody / 2;
-
+  // console.log(widthBody);
+  console.log('Coins', yBody);
   return (
     <Image
       style={{
@@ -17,10 +18,9 @@ export const Coins = props => {
         top: yBody,
         width: widthBody,
         height: heightBody,
-        // justifyContent: 'center',
-        // alignItems: 'center',
+
         // overflow: 'hidden',
-        // flexDirection: 'column',
+        flexDirection: 'column',
         zIndex: 1000,
       }}
       resizeMode="stretch"

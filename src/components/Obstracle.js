@@ -25,7 +25,7 @@ export const Obstacle = props => {
         width: widthBody,
         height: heightBody,
         overflow: 'hidden',
-        // flexDirection: 'column',
+        flexDirection: 'column',
       }}>
       {Array.apply(
         null,
@@ -34,6 +34,8 @@ export const Obstacle = props => {
         return (
           <Image
             style={{
+              // width: widthBody,
+              // height: heightBody,
               width: widthBody,
               height: Platform.OS === 'ios' ? pipeHeightIos : pipeHeight,
             }}
