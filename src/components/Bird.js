@@ -24,13 +24,15 @@ const Bird = props => {
 
   let image = Images['bird' + props.pose];
 
+  // console.log(image);
+
   return (
     <Image
       style={{
         position: 'absolute',
         left: xBody,
         top: yBody,
-        width: widthBody,
+        width: props.pose == 7 ? 150 : widthBody,
         height: heightBody,
         // width: 60,
         // height: 40,

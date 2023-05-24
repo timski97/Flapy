@@ -4,10 +4,14 @@ import {Image, View} from 'react-native';
 import {Images} from '../../utils/Images';
 
 export const Obstacle = props => {
-  const widthBody = props.body.bounds.max.x - props.body.bounds.min.x;
-  const heightBody = props.body.bounds.max.y - props.body.bounds.min.y;
-  const xBody = props.body.position.x - widthBody / 2;
-  const yBody = props.body.position.y - heightBody / 2;
+  const widthBody = Math.round(
+    props.body.bounds.max.x - props.body.bounds.min.x,
+  );
+  const heightBody = Math.round(
+    props.body.bounds.max.y - props.body.bounds.min.y,
+  );
+  const xBody = Math.round(props.body.position.x - widthBody / 2);
+  const yBody = Math.round(props.body.position.y - heightBody / 2);
 
   const pipeRatio = 219 / widthBody;
   const pipeHeight = 156 * pipeRatio;
@@ -15,7 +19,8 @@ export const Obstacle = props => {
   const pipeHeightIos = 280 * pipeRatioIos;
   const pipeIterations = Math.ceil(heightBody / pipeHeight);
   const pipeIterationsIos = Math.ceil(heightBody / pipeHeight);
-
+  // console.log('CoinsyO', yBody);
+  // console.log('CoinsxO', xBody);
   return (
     <View
       style={{

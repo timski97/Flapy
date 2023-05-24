@@ -30,7 +30,6 @@ export default restart => {
     physics: {engine, world},
 
     bird: Bird(world, 'green', {x: 50, y: 300}, {height: 40, width: 60}),
-    // bird7: Bird(world, 'green', {x: 50, y: 300}, {height: 60, width: 60}),
 
     Coins1: Coins(
       world,

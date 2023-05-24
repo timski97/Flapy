@@ -4,12 +4,18 @@ import {Image, View} from 'react-native';
 import {Images} from '../../utils/Images';
 
 export const Coins = props => {
-  const widthBody = props.body.bounds.max.x - props.body.bounds.min.x;
-  const heightBody = props.body.bounds.max.y - props.body.bounds.min.y;
-  const xBody = props.body.position.x - widthBody / 2;
-  const yBody = props.body.position.y - heightBody / 2;
+  const widthBody = Math.round(
+    props.body.bounds.max.x - props.body.bounds.min.x,
+  );
+  const heightBody = Math.round(
+    props.body.bounds.max.y - props.body.bounds.min.y,
+  );
+  const xBody = Math.round(props.body.position.x - widthBody / 2);
+  const yBody = Math.round(props.body.position.y - heightBody / 2);
+  // const yBody = 200;
   // console.log(widthBody);
-  console.log('Coins', yBody);
+  // console.log('Coinsy', yBody);
+  // console.log('Coinsx', xBody);
   return (
     <Image
       style={{

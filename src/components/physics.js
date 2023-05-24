@@ -1,6 +1,6 @@
 import Matter from 'matter-js';
 import {getPipeSizePosPair} from '../../utils/random';
-
+import {Platform} from 'react-native';
 import Constants from '../constants/Constants';
 
 let tick = 0;
@@ -29,8 +29,17 @@ const Physics = (entities, {touches, time, dispatch}) => {
         ? entities[`Coins${index}`].body.position.x <= 100
         : entities[`Coins${index}`].body.position.x <= 110
     ) {
-      entities[`Coins${index}`].point = true;
+      // entities[`Coins${index}`].point = true;
       dispatch({type: 'new_point'});
+      const coinSizePos = getPipeSizePosPair(Constants.windowWidth * 0.9);
+      Matter.Body.setPosition(
+        entities[`Coins${index}`].body,
+        coinSizePos.coinPos.pos,
+      );
+
+      entities[`Coins${index}`].point = false;
+      pose = 4;
+      entities.bird.pose = pose;
     }
 
     if (
@@ -52,21 +61,21 @@ const Physics = (entities, {touches, time, dispatch}) => {
       entities[`ObstacleTop${index}`].point = false;
       entities[`ObstacleBottom${index}`].point = false;
     }
-    if (
-      Platform.OS === 'ios'
-        ? entities[`Coins${index}`].body.position.x <= 100
-        : entities[`Coins${index}`].body.position.x <= 110
-    ) {
-      const coinSizePos = getPipeSizePosPair(Constants.windowWidth * 0.9);
-      Matter.Body.setPosition(
-        entities[`Coins${index}`].body,
-        coinSizePos.coinPos.pos,
-      );
+    // if (
+    //   Platform.OS === 'ios'
+    //     ? entities[`Coins${index}`].body.position.x <= 110
+    //     : entities[`Coins${index}`].body.position.x <= 110
+    // ) {
+    //   const coinSizePos = getPipeSizePosPair(Constants.windowWidth * 0.9);
+    //   Matter.Body.setPosition(
+    //     entities[`Coins${index}`].body,
+    //     coinSizePos.coinPos.pos,
+    //   );
 
-      // entities[`Coins${index}`].point = true;
-      pose = 4;
-      entities.bird.pose = pose;
-    }
+    //   // entities[`Coins${index}`].point = true;
+    //   pose = 4;
+    //   entities.bird.pose = pose;
+    // }
 
     Platform.OS === 'ios'
       ? Matter.Body.translate(entities[`Coins${index}`].body, {x: -3, y: 0})
@@ -77,7 +86,7 @@ const Physics = (entities, {touches, time, dispatch}) => {
           y: 0,
         })
       : Matter.Body.translate(entities[`ObstacleTop${index}`].body, {
-          x: -3,
+          x: -6,
           y: 0,
         });
     Platform.OS === 'ios'
@@ -99,18 +108,20 @@ const Physics = (entities, {touches, time, dispatch}) => {
   }
 
   Matter.Events.on(engine, 'collisionStart', event => {
-    if ((pose = 1)) {
-      pose = 5;
-    }
-    if ((pose = 2)) {
-      pose = 6;
-    }
+    // if ((pose = 1)) {
+    //   pose = 5;
+    // }
+    // if ((pose = 2)) {
+    //   pose = 6;
+    // }
     if ((pose = 3)) {
       pose = 7;
     }
+    console.log(event);
     entities.bird.pose = pose;
     dispatch({type: 'game_over'});
   });
+
   tick += 1;
   if (Platform.OS === 'ios' ? tick % 16 === 0 : tick % 8 === 0) {
     pose = pose + 1;
