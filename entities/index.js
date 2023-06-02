@@ -4,7 +4,7 @@ import Floor from '../src/components/Floor';
 import Obstacle from '../src/components/Obstracle';
 import Constants from '../src/constants/Constants';
 import Coins from '../src/components/Coins';
-import BonusBird from '../src/components/BonusBird';
+// import BonusBird from '../src/components/BonusBird';
 import {Dimensions} from 'react-native';
 import {getPipeSizePosPair} from '../utils/random';
 
@@ -19,7 +19,7 @@ export default restart => {
 
   let world = engine.world;
 
-  world.gravity.y = 0.7;
+  world.gravity.y = 0.8;
 
   const pipeSizePosA = getPipeSizePosPair();
   const pipeSizePosB = getPipeSizePosPair(Constants.windowWidth * 0.9);
@@ -34,14 +34,14 @@ export default restart => {
     Coins1: Coins(
       world,
       'Coins1',
-      // 'red',
+      // 'green',
       coinPosA.coinPos.pos,
       coinPosA.coinPos.size,
     ),
     Coins2: Coins(
       world,
       'Coins2',
-      // 'red',
+      // 'green',
       coinPosB.coinPos.pos,
       coinPosB.coinPos.size,
     ),
@@ -49,14 +49,14 @@ export default restart => {
     ObstacleTop1: Obstacle(
       world,
       'ObstacleTop1',
-      'red',
+      'green',
       pipeSizePosA.pipeTop.pos,
       pipeSizePosA.pipeTop.size,
     ),
     ObstacleBottom1: Obstacle(
       world,
       'ObstacleBottom1',
-      'white',
+      'red',
       pipeSizePosA.pipeBottom.pos,
       pipeSizePosA.pipeBottom.size,
     ),
@@ -64,21 +64,21 @@ export default restart => {
     ObstacleTop2: Obstacle(
       world,
       'ObstacleTop2',
-      'red',
+      'green',
       pipeSizePosB.pipeTop.pos,
       pipeSizePosB.pipeTop.size,
     ),
     ObstacleBottom2: Obstacle(
       world,
       'ObstacleBottom2',
-      'blue',
+      'red',
       pipeSizePosB.pipeBottom.pos,
       pipeSizePosB.pipeBottom.size,
     ),
 
     Floor: Floor(
       world,
-      'green',
+      'red',
       {x: Constants.windowWidth / 2, y: Constants.windowHeight},
       {height: 1, width: Constants.windowWidth},
     ),

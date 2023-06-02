@@ -1,6 +1,6 @@
 import Matter from 'matter-js';
 import React from 'react';
-import {Image, View} from 'react-native';
+import {Image, StyleSheet, View} from 'react-native';
 import {Images} from '../../utils/Images';
 
 export const Obstacle = props => {
@@ -12,49 +12,43 @@ export const Obstacle = props => {
   );
   const xBody = Math.round(props.body.position.x - widthBody / 2);
   const yBody = Math.round(props.body.position.y - heightBody / 2);
+  const color = props.color;
 
-  const pipeRatio = 219 / widthBody;
-  const pipeHeight = 156 * pipeRatio;
-  const pipeRatioIos = 169 / widthBody;
-  const pipeHeightIos = 280 * pipeRatioIos;
-  const pipeIterations = Math.ceil(heightBody / pipeHeight);
-  const pipeIterationsIos = Math.ceil(heightBody / pipeHeight);
-  // console.log('CoinsyO', yBody);
+  // console.log('Obstacle', yBody);
   // console.log('CoinsxO', xBody);
+
   return (
-    <View
-      style={{
-        position: 'absolute',
-        left: xBody,
-        top: yBody,
-        width: widthBody,
-        height: heightBody,
-        overflow: 'hidden',
-        flexDirection: 'column',
-      }}>
-      {Array.apply(
-        null,
-        Array(Platform.OS === 'ios' ? pipeIterationsIos : pipeIterations),
-      ).map((el, idx) => {
-        return (
-          <Image
-            style={{
-              // width: widthBody,
-              // height: heightBody,
-              width: widthBody,
-              height: Platform.OS === 'ios' ? pipeHeightIos : pipeHeight,
-            }}
-            key={idx}
-            resizeMode="stretch"
-            source={Images.column}
-          />
-        );
-      })}
+    <View>
+      <Image
+        style={
+          styles({
+            widthBody,
+            heightBody,
+            xBody,
+            yBody,
+            color,
+          }).obstacle
+        }
+        source={color === 'green' ? Images.column1 : Images.column}
+      />
+      {props.body.position.x >= 120 && (
+        <Image
+          style={{
+            position: 'absolute',
+            left: xBody + 13,
+            top: yBody - 110,
+            width: 40,
+            height: 40,
+          }}
+          resizeMode="stretch"
+          source={Images.coins}
+        />
+      )}
     </View>
   );
 };
 
-export default (world, label, color, pos, size) => {
+export default (world, label, color, pos, size, isTop = false) => {
   const initialObstacle = Matter.Bodies.rectangle(
     pos.x,
     pos.y,
@@ -70,6 +64,19 @@ export default (world, label, color, pos, size) => {
   return {
     body: initialObstacle,
     pos,
+    isTop,
+    color,
     renderer: <Obstacle />,
   };
 };
+export const styles = ({xBody, yBody, widthBody, heightBody, color}) =>
+  StyleSheet.create({
+    obstacle: {
+      position: 'absolute',
+      left: xBody,
+      top: yBody,
+      width: widthBody,
+      height: heightBody,
+      resizeMode: 'stretch',
+    },
+  });

@@ -1,8 +1,10 @@
 export const Images = {
   bgStart: require('../assets/img/bg/bg-start-6.5x.png'),
   bgNoStart: require('../assets/img/bg/bg-no-start-6.5x.png'),
+  bg: require('../assets/img/bg/BG.png'),
   start: require('../assets/img/start/Start.png'),
   column: require('../assets/img/column/column.png'),
+  column1: require('../assets/img/column/column1.png'),
   coins: require('../assets/img/column/goldArtcoin.png'),
   hart: require('../assets/img/modal/hart.png'),
   bird1: require('../assets/img/bird/bird1.png'),
@@ -12,4 +14,11 @@ export const Images = {
   bird5: require('../assets/img/bird/crashBird1.png'),
   bird6: require('../assets/img/bird/crashBird2.png'),
   bird7: require('../assets/img/bird/crashBird3.png'),
+  modalWoodenSqure: require('../assets/img/modal/woodenSqure.png'),
+  stopButton: require('../assets/img/start/stopButton.png'),
+  woodenStar: require('../assets/img/modal/woodenStar.png'),
+  indicator: require('../assets/img/modal/indicator.png'),
+  indicatorBody: require('../assets/img/modal/indicatorBody.png'),
+  woodPlayButton: require('../assets/img/modal/woodPlayButton.png'),
+  woodStopButton: require('../assets/img/modal/woodStopButton.png'),
 };

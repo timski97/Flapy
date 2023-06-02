@@ -20,11 +20,8 @@ const Bird = props => {
   //   outputRange: ['-20deg', '0deg', '15deg', '45deg'],
   //   extrapolate: 'clamp',
   // });
-  // console.log('bird', yBody);
 
   let image = Images['bird' + props.pose];
-
-  // console.log(image);
 
   return (
     <Image
@@ -32,8 +29,15 @@ const Bird = props => {
         position: 'absolute',
         left: xBody,
         top: yBody,
-        width: props.pose == 7 ? 150 : widthBody,
-        height: heightBody,
+        width:
+          props.pose == 7 ? 100 : widthBody && props.pose == 4 ? 60 : widthBody,
+        height:
+          props.pose == 7
+            ? 60
+            : heightBody && props.pose == 4
+            ? 70
+            : heightBody,
+        zIndex: 100,
         // width: 60,
         // height: 40,
         // transform: [{rotate: rotation}],
