@@ -1,23 +1,20 @@
 import React, {useState} from 'react';
 import {
   TouchableOpacity,
-  Image,
-  ActivityIndicator,
-  Vibration,
   View,
-  Button,
-  Text,
   ImageBackground,
-  Platform,
   StyleSheet,
+  StatusBar,
+  Dimensions,
 } from 'react-native';
 import {Images} from '../../utils/Images';
 import Modal from 'react-native-modal';
+import Constants from '../constants/Constants';
 
 export const WoodenModalStart = modalProps => {
   return (
     <View>
-      <Modal style={styles.woodContainer} isVisible={true}>
+      <Modal statusBarTranslucent style={styles.woodContainer} isVisible={true}>
         <TouchableOpacity
           onPress={() => {
             // setRunning(false);
@@ -34,7 +31,7 @@ export const WoodenModalStart = modalProps => {
 };
 const styles = StyleSheet.create({
   woodContainer: {
-    zIndex: 10000,
+    // zIndex: 10000,
     alignItems: 'center',
     justifyContent: 'center',
   },

@@ -45,10 +45,14 @@ export default function App() {
 
   return (
     <View style={{flex: 1}}>
-      <StatusBar translucent />
-      <ImageBackground>
-        <Image style={{width: '100%', height: '100%'}} source={Images.bg} />
-      </ImageBackground>
+      <StatusBar translucent backgroundColor="transparent" />
+      {/* <Image
+        source={Images.bg}
+        style={{
+          width: '100%',
+          marginTop: -20,
+          height: '105%',
+        }}></Image> */}
       <Video
         ref={ref => {
           videoPlayer.current = ref;
@@ -57,9 +61,12 @@ export default function App() {
         paused={!isPlaying}
         style={styles.backgroundVideo}
         repeat={true}
-        resizeMode={'stretch'}
-        // rate={2.5}
+        // resizeMode={'cover'}
+        // hideShutterView={true}
+        // posterResizeMode={'none'}
+        // rate={1.5}
       />
+
       <GameEngine
         ref={ref => {
           setGameEngine(ref);
@@ -181,6 +188,8 @@ const styles = StyleSheet.create({
   },
   backgroundVideo: {
     position: 'absolute',
+    width: '100%',
+    height: '100%',
     top: 0,
     left: 0,
     bottom: 0,

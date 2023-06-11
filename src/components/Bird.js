@@ -11,15 +11,6 @@ const Bird = props => {
 
   const xBody = props.body.position.x - widthBody / 2;
   const yBody = props.body.position.y - heightBody / 2;
-  // const startAnimated = () => {
-  //   animatedValue.setValue(props.body.velocity.y);
-  // };
-
-  // const rotation = startAnimated.interpolate({
-  //   inputRange: [-10, 0, 10, 20],
-  //   outputRange: ['-20deg', '0deg', '15deg', '45deg'],
-  //   extrapolate: 'clamp',
-  // });
 
   let image = Images['bird' + props.pose];
 
@@ -30,17 +21,31 @@ const Bird = props => {
         left: xBody,
         top: yBody,
         width:
-          props.pose == 7 ? 100 : widthBody && props.pose == 4 ? 60 : widthBody,
+          props.pose == 7
+            ? 100
+            : widthBody && props.pose == 4
+            ? 90
+            : widthBody && props.pose == 2
+            ? 60
+            : widthBody && props.pose == 3
+            ? 60
+            : widthBody && props.pose == 1
+            ? 60
+            : widthBody,
+
         height:
           props.pose == 7
             ? 60
             : heightBody && props.pose == 4
-            ? 70
+            ? 90
+            : heightBody && props.pose == 2
+            ? 50
+            : heightBody && props.pose == 3
+            ? 38
+            : heightBody && props.pose == 1
+            ? 50
             : heightBody,
         zIndex: 100,
-        // width: 60,
-        // height: 40,
-        // transform: [{rotate: rotation}],
       }}
       resizeMode="stretch"
       source={image}

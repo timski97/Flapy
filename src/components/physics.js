@@ -16,7 +16,7 @@ const Physics = (entities, {touches, time, dispatch}) => {
       if (!hadTouches) {
         Matter.Body.setVelocity(bird, {
           x: 0,
-          y: -7,
+          y: -4,
         });
       }
     });
@@ -25,21 +25,14 @@ const Physics = (entities, {touches, time, dispatch}) => {
 
   for (let index = 1; index <= 2; index++) {
     if (
-      Platform.OS === 'ios'
-        ? entities[`Coins${index}`].body.position.x <= 102
-        : entities[`Coins${index}`].body.position.x <= 113
+      entities[`ObstacleTop${index}`].body.position.x <= 130 &&
+      !entities[`ObstacleTop${index}`].point
     ) {
-      entities[`Coins${index}`].point = true;
-      dispatch({type: 'new_point'});
-      const coinSizePos = getPipeSizePosPair(Constants.windowWidth * 0.91);
-      Matter.Body.setPosition(
-        entities[`Coins${index}`].body,
-        coinSizePos.coinPos.pos,
-      );
-
-      // entities[`Coins${index}`].point = false;
+      entities[`ObstacleTop${index}`].point = true;
       pose = 4;
       entities.bird.pose = pose;
+
+      dispatch({type: 'new_point'});
     }
 
     if (
@@ -62,7 +55,6 @@ const Physics = (entities, {touches, time, dispatch}) => {
       entities[`ObstacleBottom${index}`].point = false;
     }
 
-    Matter.Body.translate(entities[`Coins${index}`].body, {x: -2, y: 0});
     Matter.Body.translate(entities[`ObstacleTop${index}`].body, {x: -2, y: 0});
     Matter.Body.translate(entities[`ObstacleBottom${index}`].body, {
       x: -2,
@@ -71,26 +63,22 @@ const Physics = (entities, {touches, time, dispatch}) => {
   }
 
   Matter.Events.on(engine, 'collisionStart', event => {
-    if ((pose = 3)) {
-      pose = 7;
-    }
+    pose = 7;
+
     // console.log(event);
     entities.bird.pose = pose;
-
-    // dispatch({type: 'game_over'});
-
     dispatch({type: 'game_over'});
   });
-
   tick += 1;
-  if (Platform.OS === 'ios' ? tick % 16 === 0 : tick % 12 === 0) {
+  if (tick % 10 === 0) {
     pose = pose + 1;
+    // pose = 2;
     if (pose > 3) {
       pose = 1;
     }
+
     entities.bird.pose = pose;
   }
-
   return entities;
 };
 export default Physics;

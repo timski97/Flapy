@@ -19,32 +19,15 @@ export default restart => {
 
   let world = engine.world;
 
-  world.gravity.y = 0.8;
+  world.gravity.y = 0.5;
 
   const pipeSizePosA = getPipeSizePosPair();
   const pipeSizePosB = getPipeSizePosPair(Constants.windowWidth * 0.9);
-  const coinPosA = getPipeSizePosPair();
-  const coinPosB = getPipeSizePosPair(Constants.windowWidth * 0.9);
 
   return {
     physics: {engine, world},
 
     bird: Bird(world, 'green', {x: 50, y: 300}, {height: 40, width: 60}),
-
-    Coins1: Coins(
-      world,
-      'Coins1',
-      // 'green',
-      coinPosA.coinPos.pos,
-      coinPosA.coinPos.size,
-    ),
-    Coins2: Coins(
-      world,
-      'Coins2',
-      // 'green',
-      coinPosB.coinPos.pos,
-      coinPosB.coinPos.size,
-    ),
 
     ObstacleTop1: Obstacle(
       world,

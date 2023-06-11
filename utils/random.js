@@ -20,20 +20,13 @@ export const getPipeSizePosPair = (addToPosX = 0) => {
     size: {height: Constants.windowHeight, width: 75},
   };
 
-  const coinPos = {
-    pos: {
-      x: Math.round(Constants.windowWidth + addToPosX),
-      y: 9000,
-    },
-    size: {height: 41, width: 41},
-  };
   const pipeBottom = {
     pos: {
       x: Math.round(Constants.windowWidth + addToPosX),
-      y: Math.round(Constants.windowHeight + 200 + yPosTop),
+      y: Math.round(Constants.windowHeight + 160 + yPosTop),
     },
     size: {height: Constants.windowHeight, width: 75},
   };
 
-  return {pipeTop, coinPos, pipeBottom};
+  return {pipeTop, pipeBottom};
 };

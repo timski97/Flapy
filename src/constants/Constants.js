@@ -7,6 +7,7 @@ export default Constants = {
   // windowHeight: Dimensions.get('screen').height,
   // windowWidth: Dimensions.get('screen').width,
   windowHeight: Dimensions.get('window').height,
+  windowHeightScreen: Dimensions.get('screen').height,
   windowWidth: Dimensions.get('window').width,
   GAP_SIZE: 320,
   PIPE_WIDTH: 100,
