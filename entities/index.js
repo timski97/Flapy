@@ -3,16 +3,10 @@ import Bird from '../src/components/Bird';
 import Floor from '../src/components/Floor';
 import Obstacle from '../src/components/Obstracle';
 import Constants from '../src/constants/Constants';
-import Coins from '../src/components/Coins';
-// import BonusBird from '../src/components/BonusBird';
 import {Dimensions} from 'react-native';
 import {getPipeSizePosPair} from '../utils/random';
 
-// const windowHeight = Dimensions.get('window').height;
-// const windowWidth = Dimensions.get('window').width;
 const {height, width} = Dimensions.get('window');
-// const heightRatio = height / 667;
-// const widthRatio = width / 375;
 
 export default restart => {
   let engine = Matter.Engine.create({enableSleeping: false});
@@ -63,7 +57,7 @@ export default restart => {
       world,
       'red',
       {x: Constants.windowWidth / 2, y: Constants.windowHeight},
-      {height: 1, width: Constants.windowWidth},
+      {height: 10, width: Constants.windowWidth},
     ),
   };
 };

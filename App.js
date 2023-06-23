@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState, useEffect, useMemo} from 'react';
 import {
   Text,
   TouchableOpacity,
@@ -15,12 +15,9 @@ import Video from 'react-native-video';
 import entities from './entities';
 import Physics from './src/components/physics';
 import {Images} from './utils/Images';
-import FastImage from 'react-native-fast-image';
-import {Platform} from 'react-native';
 import {WoodenModal} from './src/components/Modal';
 import {WoodenModalStart} from './src/components/ModalStart';
 import video from './assets/video/coffeeapp.mp4';
-import Constants from './src/constants/Constants';
 
 export default function App() {
   const [running, setRunning] = useState(false);
@@ -31,7 +28,6 @@ export default function App() {
   const [isPlaying, setIsPlaying] = useState(false);
 
   useEffect(() => {
-    // setStopGame(false);
     setRunning(false);
     setStop(false);
   }, []);
@@ -46,13 +42,14 @@ export default function App() {
   return (
     <View style={{flex: 1}}>
       <StatusBar translucent backgroundColor="transparent" />
-      {/* <Image
+      <Image
         source={Images.bg}
         style={{
           width: '100%',
           marginTop: -20,
           height: '105%',
-        }}></Image> */}
+        }}></Image>
+
       <Video
         ref={ref => {
           videoPlayer.current = ref;
@@ -61,12 +58,10 @@ export default function App() {
         paused={!isPlaying}
         style={styles.backgroundVideo}
         repeat={true}
-        // resizeMode={'cover'}
-        // hideShutterView={true}
-        // posterResizeMode={'none'}
+        resizeMode={'cover'}
+
         // rate={1.5}
       />
-
       <GameEngine
         ref={ref => {
           setGameEngine(ref);
@@ -80,11 +75,9 @@ export default function App() {
         onEvent={e => {
           switch (e.type) {
             case 'game_over':
-              // setStopGame(false);
               setIsPlaying(false);
               setStop(false);
               setRunning(false);
-              gameEngine.stop();
               break;
             case 'new_point':
               setCurrentPoints(currentPoints + 1);

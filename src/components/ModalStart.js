@@ -14,7 +14,11 @@ import Constants from '../constants/Constants';
 export const WoodenModalStart = modalProps => {
   return (
     <View>
-      <Modal statusBarTranslucent style={styles.woodContainer} isVisible={true}>
+      <Modal
+        statusBarTranslucent
+        style={styles.woodContainer}
+        isVisible={true}
+        deviceHeight={Constants.windowHeightScreen}>
         <TouchableOpacity
           onPress={() => {
             // setRunning(false);

@@ -4,8 +4,6 @@ import {Image, Animated, View} from 'react-native';
 import {Images} from '../../utils/Images';
 
 const Bird = props => {
-  // const animatedValue = useRef(new Animated.Value(props.body.velocity.y));
-
   const widthBody = props.body.bounds.max.x - props.body.bounds.min.x;
   const heightBody = props.body.bounds.max.y - props.body.bounds.min.y;
 
@@ -18,13 +16,13 @@ const Bird = props => {
     <Image
       style={{
         position: 'absolute',
-        left: xBody,
+        left: props.pose == 4 ? xBody - 22 : xBody,
         top: yBody,
         width:
           props.pose == 7
             ? 100
             : widthBody && props.pose == 4
-            ? 90
+            ? 80
             : widthBody && props.pose == 2
             ? 60
             : widthBody && props.pose == 3
@@ -37,7 +35,7 @@ const Bird = props => {
           props.pose == 7
             ? 60
             : heightBody && props.pose == 4
-            ? 90
+            ? 80
             : heightBody && props.pose == 2
             ? 50
             : heightBody && props.pose == 3

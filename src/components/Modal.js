@@ -11,11 +11,16 @@ import {
 import {Images} from '../../utils/Images';
 import Modal from 'react-native-modal';
 import {ModalInfo} from './ModalInfo';
+import Constants from '../constants/Constants';
 
 export const WoodenModal = modalProps => {
   return (
     <View>
-      <Modal statusBarTranslucent style={styles.woodContainer} isVisible={true}>
+      <Modal
+        statusBarTranslucent
+        style={styles.woodContainer}
+        isVisible={true}
+        deviceHeight={Constants.windowHeightScreen}>
         <ImageBackground
           resizeMode="stretch"
           style={styles.woodenDesk}

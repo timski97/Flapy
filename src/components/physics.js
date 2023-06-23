@@ -25,27 +25,23 @@ const Physics = (entities, {touches, time, dispatch}) => {
 
   for (let index = 1; index <= 2; index++) {
     if (
-      entities[`ObstacleTop${index}`].body.position.x <= 130 &&
+      entities[`ObstacleTop${index}`].body.position.x <= 110 &&
       !entities[`ObstacleTop${index}`].point
     ) {
       entities[`ObstacleTop${index}`].point = true;
       pose = 4;
       entities.bird.pose = pose;
-
       dispatch({type: 'new_point'});
     }
 
-    if (
-      Platform.OS === 'ios'
-        ? entities[`ObstacleTop${index}`].body.position.x <= -50
-        : entities[`ObstacleTop${index}`].body.position.x <= -55
-    ) {
-      const pipeSizePos = getPipeSizePosPair(Constants.windowWidth * 0.5);
+    if (entities[`ObstacleTop${index}`].body.bounds.max.x <= 0) {
+      const pipeSizePos = getPipeSizePosPair(Constants.windowWidth * 0.7);
 
       Matter.Body.setPosition(
         entities[`ObstacleTop${index}`].body,
         pipeSizePos.pipeTop.pos,
       );
+
       Matter.Body.setPosition(
         entities[`ObstacleBottom${index}`].body,
         pipeSizePos.pipeBottom.pos,
@@ -64,21 +60,18 @@ const Physics = (entities, {touches, time, dispatch}) => {
 
   Matter.Events.on(engine, 'collisionStart', event => {
     pose = 7;
-
-    // console.log(event);
     entities.bird.pose = pose;
     dispatch({type: 'game_over'});
   });
   tick += 1;
-  if (tick % 10 === 0) {
+  if (tick % 9 === 0) {
     pose = pose + 1;
-    // pose = 2;
     if (pose > 3) {
       pose = 1;
     }
-
     entities.bird.pose = pose;
   }
+
   return entities;
 };
 export default Physics;
